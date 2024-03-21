@@ -2,27 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    private int health = 10;
-    private int coins;
-    public AudioSource audioSource;
-    public AudioClip collectCoins;
+    // Enemy Movement speed 
+    public float speed;
 
-    public void CollectCoins()
+    // The target is enemy moving towards
+    public Transform target;
+
+    // Damagepoint from an attack by the player enemy
+    private int playerDamage = 2;
+
+    // Update is called once per frame
+    void Update()
     {
-        // variableName ++ means variableName = variableName + 1
-        coins++;
-        // PlayOneShot means play once
-        audioSource.PlayOneShot(collectCoins);
+        // Change NPC pos to a new one every frame
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
-        print("coins:" +  coins);
+        // Look at the player
+        transform.LookAt(target.position);
+
+     
     }
-
-    public void TakeDamage(int damagePoints)
+    private void OnTriggerStay(Collider other)
     {
-        // Take health from the taken damage (health -= damagePoints)
-        health -= damagePoints;
-        print(health);
+        // Get the "Player" script
+        Player player = other.GetComponent<Player>();
+
+        // Use the "Player" script to take damage from the player
+        player.TakeDamage(playerDamage);
     }
 }
+
+
