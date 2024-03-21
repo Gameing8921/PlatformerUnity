@@ -5,11 +5,10 @@ using UnityEditor.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    public string Scene = "Level_1";
 
     void OnCollisionEnter(Collision collision)
     {
-       EditorSceneManager.LoadScene(Scene);
+       EditorSceneManager.LoadScene("Level_1");
     }
 }
 
