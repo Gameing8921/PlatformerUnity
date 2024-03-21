@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private int coins;
     public AudioSource audioSource;
     public AudioClip collectCoins;
-        // Call CollectCoins with the "Coins" script
+
     public void CollectCoins()
     {
         // variableName ++ means variableName = variableName + 1
@@ -18,9 +18,11 @@ public class Player : MonoBehaviour
 
         print("coins:" +  coins);
     }
-        // Call TakeDamage later
-    public void TakeDamage()
-    {
 
+    public void TakeDamage(int damagePoints)
+    {
+        // Take health from the taken damage (health -= damagePoints)
+        health -= damagePoints;
+        print(health);
     }
 }
