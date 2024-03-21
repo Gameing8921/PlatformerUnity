@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     private int health = 10;
     private int coins;
+    public string Scene = "Level_1";
     public AudioSource audioSource;
     public AudioClip collectCoins;
 
@@ -23,6 +25,11 @@ public class Player : MonoBehaviour
     {
         // Take health from the taken damage (health -= damagePoints)
         health -= damagePoints;
-        print(health);
+        print("health:" + health);
+
+        if (health > 0)
+        {
+            EditorSceneManager.LoadScene(Scene);
+        }
     }
 }
