@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private int health = 10;
     private int coins;
     public AudioSource audioSource;
     public AudioClip collectCoins;
-
+        // Call CollectCoins with the "Coins" script
     public void CollectCoins()
     {
         // variableName ++ means variableName = variableName + 1
@@ -16,5 +17,10 @@ public class Player : MonoBehaviour
         audioSource.PlayOneShot(collectCoins);
 
         print("coins:" +  coins);
+    }
+        // Call TakeDamage later
+    public void TakeDamage()
+    {
+
     }
 }
