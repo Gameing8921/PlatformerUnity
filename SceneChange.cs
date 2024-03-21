@@ -8,6 +8,7 @@ public class SceneChange : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        // Reset scene
        EditorSceneManager.LoadScene("Level_1");
     }
 }
