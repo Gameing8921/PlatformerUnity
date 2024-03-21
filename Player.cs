@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.SceneManagement;
+using UnityEditor.VersionControl;
+using System;
 
 public class Player : MonoBehaviour
 {
+    // Make all required variables
     private int health = 10;
     private int coins;
-    public string Scene = "Level_1";
     public AudioSource audioSource;
     public AudioClip collectCoins;
 
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
         // PlayOneShot means play once
         audioSource.PlayOneShot(collectCoins);
 
+        // Print coins
         print("coins:" +  coins);
     }
 
@@ -27,9 +30,14 @@ public class Player : MonoBehaviour
         health -= damagePoints;
         print("health:" + health);
 
-        if (health > 0)
+        // Check if health is lost
+        if (health <= 0) 
         {
-            EditorSceneManager.LoadScene(Scene);
+            // Reset the scene
+            EditorSceneManager.LoadScene("Level_1");
         }
     }
 }
+
+
+
